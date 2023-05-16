@@ -5,8 +5,12 @@ const router = express.Router();
 //Create User
 router.post('/create', async (req, res) => {
     const data = new Model({
+        username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        name: req.body.name,
+        lastname: req.body.lastname,
+        apps: req.body.apps
     })
 
     try {
@@ -30,9 +34,9 @@ router.get('/getAll', async (req, res) => {
 })
 
 //Get User
-router.get('/getUser/:email', async (req, res) => {
+router.get('/getUser/:username', async (req, res) => {
     try {
-        const data = await Model.find({ "email": req.params.email });
+        const data = await Model.find({ "username": req.params.username });
         res.json(data)
     }
     catch (error) {
@@ -40,7 +44,7 @@ router.get('/getUser/:email', async (req, res) => {
     }
 })
 
-//Update by ID Method
+//Update by ID
 router.patch('/update/:id', async (req, res) => {
     try {
         const id = req.params.id;
@@ -58,7 +62,7 @@ router.patch('/update/:id', async (req, res) => {
     }
 })
 
-//Delete by ID Method
+//Delete by ID
 router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id;
