@@ -34,10 +34,25 @@ router.get('/getAll', async (req, res) => {
 })
 
 //Get User
-router.get('/getUser/:username', async (req, res) => {
+router.post('/getUser', async (req, res) => {
     try {
-        const data = await Model.find({ "username": req.params.username });
-        res.json(data)
+        // const data = await Model.find({ "username": req.body.username, "password": req.body.password});
+        const user = await Model.find({
+            "username": req.body.username
+        });
+        if (user[0]) {
+            const data = await Model.find({
+                "username": req.body.username,
+                "password": req.body.password
+            });
+            if (data[0]) {
+                res.json(data[0]);
+            } else {
+                res.status(401).json({ message: `Wrong password for user ${req.body.username}` });
+            }
+        } else {
+            res.status(401).json({ message: `Unknown user ${req.body.username}` });
+        }
     }
     catch (error) {
         res.status(500).json({ message: error.message })
