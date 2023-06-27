@@ -1,29 +1,37 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    username: {
-      required: true,
-      type: String
+    name: {
+        required: true,
+        type: String
+    },
+    lastname1: {
+        required: true,
+        type: String
+    },
+    lastname2: {
+        required: false,
+        type: String
     },
     email: {
         required: true,
         type: String
     },
-    password: {
+    phone1: {
         required: true,
         type: String
     },
-    name: {
-        required: true,
+    phone2: {
+        required: false,
         type: String
     },
-    lastname: {
-        required: true,
+    company: {
+        required: false,
         type: String
     },
-    apps: {
+    type: {
         required: true,
-        type: []
+        type: String
     }
 })
 
