@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const leadDataSchema = new mongoose.Schema({
     name: {
         required: true,
         type: String
@@ -32,7 +32,11 @@ const userSchema = new mongoose.Schema({
     type: {
         required: true,
         type: String
+    },
+    seller_id: {
+        required: true,
+        type: String
     }
 })
 
-module.exports = mongoose.model('Data', userSchema)
+module.exports = mongoose.model('Data', leadDataSchema)
