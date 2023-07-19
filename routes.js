@@ -11,9 +11,8 @@ router.post('/add', async (req, res) => {
         email: req.body.email,
         phone1: req.body.phone1,
         phone2: req.body.phone2,
-        company: req.body.company,
-        type: req.body.type,
-        seller_id: req.body.seller_id
+        currentCompany: req.body.currentCompany,
+        coverage: req.body.coverage
     })
 
     try {

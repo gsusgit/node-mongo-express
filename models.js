@@ -25,15 +25,11 @@ const leadDataSchema = new mongoose.Schema({
         required: false,
         type: String
     },
-    company: {
+    currentCompany: {
         required: false,
         type: String
     },
-    type: {
-        required: true,
-        type: String
-    },
-    seller_id: {
+    coverage: {
         required: true,
         type: String
     }
